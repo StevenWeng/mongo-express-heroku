@@ -90,20 +90,22 @@ module.exports = {
     connectionString: mongo.connectionString || getConnectionStringFromEnvVariables(),
 
     connectionOptions: {
-      // ssl: connect to the server using secure SSL
-      ssl: process.env.ME_CONFIG_MONGODB_SSL || mongo.ssl,
+      // // ssl: connect to the server using secure SSL
+      // ssl: process.env.ME_CONFIG_MONGODB_SSL || mongo.ssl,
 
-      // sslValidate: validate mongod server certificate against CA
-      sslValidate: process.env.ME_CONFIG_MONGODB_SSLVALIDATE || true,
+      // // sslValidate: validate mongod server certificate against CA
+      // sslValidate: process.env.ME_CONFIG_MONGODB_SSLVALIDATE || true,
 
-      // sslCA: array of valid CA certificates
-      sslCA: sslCAFromEnv ? [sslCAFromEnv] : [],
+      // // sslCA: array of valid CA certificates
+      // sslCA: sslCAFromEnv ? [sslCAFromEnv] : [],
 
-      // autoReconnect: automatically reconnect if connection is lost
-      autoReconnect: true,
+      // // autoReconnect: automatically reconnect if connection is lost
+      // autoReconnect: true,
 
-      // poolSize: size of connection pool (number of connections to use)
-      poolSize: 4,
+      // // poolSize: size of connection pool (number of connections to use)
+      // poolSize: 4,
+
+      useNewUrlParser: true, useUnifiedTopology: true 
     },
 
     // set admin to true if you want to turn on admin features
@@ -126,7 +128,7 @@ module.exports = {
     cookieKeyName: 'mongo-express',
     cookieSecret: process.env.ME_CONFIG_SITE_COOKIESECRET || 'cookiesecret',
     host: process.env.VCAP_APP_HOST || 'localhost',
-    port: process.env.VCAP_APP_PORT || 8081,
+    port: process.env.PORT || 8081,
     requestSizeLimit: process.env.ME_CONFIG_REQUEST_SIZE || '50mb',
     sessionSecret: process.env.ME_CONFIG_SITE_SESSIONSECRET || 'sessionsecret',
     sslCert: process.env.ME_CONFIG_SITE_SSL_CRT_PATH || '',
